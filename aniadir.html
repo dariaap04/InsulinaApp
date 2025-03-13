@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Comidas</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="formularios.css" rel="stylesheet">
+    <style>
+         .navbar {
+            background: white;
+            box-shadow: var(--shadow);
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            padding: 15px 25px;
+            position: relative;
+        }
+        
+        .navbar-brand {
+            color: var(--primary-color) !important;
+            font-weight: 700;
+            font-size: 1.5rem;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: -0.5px;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            padding: 8px 16px !important;
+            margin: 0 5px;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            background-color: rgba(99, 102, 241, 0.08);
+        }
+        
+        .nav-link.active {
+            color: white !important;
+            background: var(--primary-gradient);
+        }
+        
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 5px;
+            height: 5px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-header">
+            <h1><i class="fas fa-utensils"></i> Registro de Comidas</h1>
+            <p class="text-muted">Registra tus comidas y niveles de glucosa</p>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <i class="fas fa-heartbeat me-2"></i>Control Glucosa
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <i class="fas fa-home me-1"></i> Inicio
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="consulta.php">
+                                <i class="fas fa-table me-1"></i> Consulta
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="aniadir.html">
+                                <i class="fas fa-plus-circle me-1"></i> Añadir
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="verDatos.php">
+                                <i class="fas fa-chart-bar me-1"></i> Estadísticas
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <form id="formularioPrincipal" action="aniadir.php" method="post">
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-calendar-alt"></i> Información General
+                </div>
+                <div class="mb-3 input-with-icon">
+                    <label for="fecha" class="form-label">Fecha</label>
+                    <input type="date" class="form-control" id="fecha" name="fecha" required>
+                    <i class="fas fa-calendar"></i>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-hamburger"></i> Seleccione Comida
+                </div>
+                <div class="meal-options">
+                    <div class="meal-option">
+                        <input type="radio" name="comida" id="desayuno" value="desayuno" class="meal-radio" required>
+                        <label for="desayuno" class="meal-label">
+                            <span class="meal-icon">🍳</span>
+                            Desayuno
+                        </label>
+                    </div>
+                    <div class="meal-option">
+                        <input type="radio" name="comida" id="almuerzo" value="almuerzo" class="meal-radio">
+                        <label for="almuerzo" class="meal-label">
+                            <span class="meal-icon">🍲</span>
+                            Almuerzo
+                        </label>
+                    </div>
+                    <div class="meal-option">
+                        <input type="radio" name="comida" id="merienda" value="merienda" class="meal-radio">
+                        <label for="merienda" class="meal-label">
+                            <span class="meal-icon">🥪</span>
+                            Merienda
+                        </label>
+                    </div>
+                    <div class="meal-option">
+                        <input type="radio" name="comida" id="cena" value="cena" class="meal-radio">
+                        <label for="cena" class="meal-label">
+                            <span class="meal-icon">🍽️</span>
+                            Cena
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-tint"></i> Información de Glucosa
+                </div>
+                <div class="glucose-fields">
+                    <div class="mb-3 input-with-icon">
+                        <label for="gl1h" class="form-label">Glucosa 1h</label>
+                        <input type="number" class="form-control" id="gl1h" name="gl1h" placeholder="mg/dL">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="mb-3 input-with-icon">
+                        <label for="rac" class="form-label">RAC</label>
+                        <input type="number" class="form-control" id="rac" name="rac" placeholder="Raciones">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <div class="mb-3 input-with-icon">
+                        <label for="insulina" class="form-label">Insulina</label>
+                        <input type="number" class="form-control" id="insulina" name="insulina" placeholder="UI">
+                        <i class="fas fa-syringe"></i>
+                    </div>
+                    <div class="mb-3 input-with-icon">
+                        <label for="gl2h" class="form-label">Glucosa 2h</label>
+                        <input type="number" class="form-control" id="gl2h" name="gl2h" placeholder="mg/dL">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-stethoscope"></i> Estado de Glucosa
+                </div>
+                <input type="hidden" id="estado_glucosa" name="estado_glucosa" value="ninguna">
+                
+                <div class="glucose-state-options mb-4">
+                    <div class="state-option">
+                        <input type="radio" name="estado_visual" id="normal" value="ninguna" class="state-radio" checked>
+                        <label for="normal" class="state-label">
+                            <span class="state-icon"><i class="fas fa-check-circle"></i></span>
+                            <span class="state-text">Normal</span>
+                        </label>
+                    </div>
+                    <div class="state-option">
+                        <input type="radio" name="estado_visual" id="hipoglucemia" value="hipo" class="state-radio">
+                        <label for="hipoglucemia" class="state-label">
+                            <span class="state-icon"><i class="fas fa-arrow-down"></i></span>
+                            <span class="state-text">Hipoglucemia</span>
+                        </label>
+                    </div>
+                    <div class="state-option">
+                        <input type="radio" name="estado_visual" id="hiperglucemia" value="hiper" class="state-radio">
+                        <label for="hiperglucemia" class="state-label">
+                            <span class="state-icon"><i class="fas fa-arrow-up"></i></span>
+                            <span class="state-text">Hiperglucemia</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div id="hipo-form" class="state-details d-none">
+                    <h5 class="details-title"><i class="fas fa-arrow-down text-warning"></i> Detalles de Hipoglucemia</h5>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="input-with-icon">
+                                <label for="glucosa1" class="form-label">Glucosa</label>
+                                <input type="number" class="form-control" id="glucosa1" name="glucosa1" placeholder="mg/dL">
+                                <i class="fas fa-tint text-warning"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-with-icon">
+                                <label for="hora1" class="form-label">Hora</label>
+                                <input type="time" class="form-control" id="hora1" name="hora1">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="hiper-form" class="state-details d-none">
+                    <h5 class="details-title"><i class="fas fa-arrow-up text-danger"></i> Detalles de Hiperglucemia</h5>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="input-with-icon">
+                                <label for="glucosa2" class="form-label">Glucosa</label>
+                                <input type="number" class="form-control" id="glucosa2" name="glucosa2" placeholder="mg/dL">
+                                <i class="fas fa-tint text-danger"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-with-icon">
+                                <label for="hora2" class="form-label">Hora</label>
+                                <input type="time" class="form-control" id="hora2" name="hora2">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <div class="input-with-icon">
+                                <label for="correccion" class="form-label">Corrección</label>
+                                <input type="number" class="form-control" id="correccion" name="correccion" placeholder="UI">
+                                <i class="fas fa-syringe"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-footer">
+                <div class="form-step">
+                    <div class="step-number">3</div>
+                    <div class="step-text">Paso 3 de 3</div>
+                </div>
+                <button type="submit" class="btn btn-primary" id="submitBtn">
+                    <i class="fas fa-save"></i> Guardar Registro
+                </button>
+            </div>
+        </form>
+    </div>
+
+    
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const stateRadios = document.querySelectorAll('.state-radio');
+    const estadoInput = document.getElementById('estado_glucosa');
+    const hipoForm = document.getElementById('hipo-form');
+    const hiperForm = document.getElementById('hiper-form');
+    
+    stateRadios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            // Actualizar el valor del input hidden
+            const estado = this.value;
+            estadoInput.value = estado;
+            
+            // Mostrar/ocultar los formularios según el estado seleccionado
+            if (estado === 'hipo') {
+                hipoForm.classList.remove('d-none');
+                hiperForm.classList.add('d-none');
+            } else if (estado === 'hiper') {
+                hipoForm.classList.add('d-none');
+                hiperForm.classList.remove('d-none');
+            } else {
+                hipoForm.classList.add('d-none');
+                hiperForm.classList.add('d-none');
+            }
+        });
+    });
+});
+    </script>
+</body>
+</html>

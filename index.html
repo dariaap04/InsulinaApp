@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inicio de Sesión y Registro</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link href="css.css" rel="stylesheet">
+</head>
+<body>
+  <div class="row">
+    <div class="col-12">
+        <!-- navbar mejorado -->
+        <nav class="navbar navbar-expand-lg navbar-dark"> 
+            <div class="container"> 
+              <a class="navbar-brand" href="#">
+                  <i class="fas fa-heartbeat me-2"></i>Control Glucosa
+              </a> 
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> 
+                <span class="navbar-toggler-icon"></span> 
+              </button> 
+              <div class="collapse navbar-collapse" id="navbarNav"> 
+                <ul class="navbar-nav ms-auto"> 
+                  <li class="nav-item"> 
+                    <a class="nav-link active" href="index.html">
+                       <i class="fas fa-home me-1"></i> Inicio
+                    </a> 
+                  </li> 
+                  <li class="nav-item"> 
+                    <a class="nav-link active" href="consulta.php">
+                       <i class="fas fa-table me-1"></i> Consulta
+                    </a> 
+                  </li> 
+                  <li class="nav-item"> 
+                    <a class="nav-link active" href="aniadir.html">
+                       <i class="fas fa-plus-circle me-1"></i> Añadir
+                    </a> 
+                  </li> 
+      
+                  
+                </ul> 
+             </div>
+            </div> 
+        </nav> 
+    </div>
+</div>
+
+  <!-- Contenido principal -->
+  <main class="main-content">
+    <div class="form-container">
+      <h2 class="form-title">Bienvenido</h2>
+      <!-- Pestañas de navegación para los formularios -->
+      <ul class="nav nav-pills mb-4 justify-content-center" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="login-tab" data-bs-toggle="pill" data-bs-target="#login" type="button" role="tab" aria-controls="login" aria-selected="true">
+            Iniciar Sesión
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="register-tab" data-bs-toggle="pill" data-bs-target="#register" type="button" role="tab" aria-controls="register" aria-selected="false">
+            Registro
+          </button>
+        </li>
+      </ul>
+      <div class="tab-content" id="pills-tabContent">
+        <!-- Formulario de inicio de sesión -->
+        <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+          <form action="login.php" method="POST"  accept-charset="UTF-8">
+            <div class="mb-4">
+              <label for="usuario" class="form-label">Usuario</label>
+              <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Ingresa tu usuario" required>
+            </div>
+            <div class="mb-4">
+              <label for="contra" class="form-label">Contraseña</label>
+              <input type="password" class="form-control" id="contra" name="contra" placeholder="Ingresa tu contraseña" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
+          </form>
+        </div>
+        <!-- Formulario de registro -->
+        <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+          <form action="registro.php" method="POST">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Tu nombre" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="apellidos" class="form-label">Apellidos</label>
+                <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Tus apellidos" required>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento</label>
+              <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" required>
+            </div>
+            <div class="mb-3">
+              <label for="usuario_reg" class="form-label">Usuario</label>
+              <input type="text" class="form-control" id="usuario_reg" name="usuario" placeholder="Elige un usuario" required>
+            </div>
+            <div class="mb-4">
+              <label for="contra_reg" class="form-label">Contraseña</label>
+              <input type="password" class="form-control" id="contra_reg" name="contra" placeholder="Elige una contraseña" required>
+            </div>
+            <button type="submit" class="btn btn-success w-100" name="enviar">Registrarse</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <!-- Footer -->
+  <footer class="footer text-white text-center">
+    <div class="container">
+      <p class="mb-0">© 2025 Control Glucosa. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+  
+  <!-- Bootstrap JS Bundle con Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
